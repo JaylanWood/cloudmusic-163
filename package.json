@@ -1,0 +1,23 @@
+{
+  "name": "cloudmusic-163",
+  "version": "1.0.0",
+  "description": "## 简介",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaylanWood/cloudmusic-163.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JaylanWood/cloudmusic-163/issues"
+  },
+  "homepage": "https://github.com/JaylanWood/cloudmusic-163#readme",
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "leancloud-storage": "^4.5.0"
+  }
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>CloudMusic 管理页面</title>
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/admin.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="title">CloudMusic 后台管理</div>
+    </header>
+    <main>
+        <nav class="navigation">
+            <ul>
+                <li>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-yinyue"></use>
+                    </svg>
+                    <span>歌曲</span>
+                </li>
+                <li>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-image"></use>
+                    </svg>
+                    <span>封面</span>
+                </li>
+                <li>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-list2"></use>
+                    </svg>
+                    <span>歌单</span>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="library">
+
+            <button class="addResource">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-add"></use>
+                </svg>
+                <span>新建</span>
+            </button>
+
+            <div class="resources">
+                <ul class="images">
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西范特西范特西范特西范特西范特西范特西范特西范特西范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                    <li class="imageItem">
+                        <img src="./img/范特西.jpg" alt="">
+                        <span class="imgName">范特西</span>
+                        <button class="copyImgUrl">复制链接</button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="editResource">
+            <form>
+                <h3>编辑封面</h3>
+                <div class="row">
+                    <label>
+                        <span>名字：</span>
+                        <input type="text">
+                    </label>
+                </div>
+                <div class="row">
+                    <label>
+                        <span>链接：</span>
+                        <input type="text">
+                    </label>
+                </div>
+                <div class="row">
+                    <label>
+                        <span>预览：</span>
+                        <img src="./img/范特西.jpg" alt="" width="200">
+                    </label>
+                </div>
+                <div class="row">
+                    <button type="submit">保存</button>
+                    <button>取消</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+
+    <!-- 阿里巴巴图标 -->
+    <script src="//at.alicdn.com/t/font_1706048_8dhpv8ztwro.js"></script>
+    <!-- jquery -->
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- LeanCloud -->
+    <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>
