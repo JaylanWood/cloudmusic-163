@@ -50,12 +50,14 @@
 
         <div class="library">
 
-            <button class="addResource">
-                <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-add"></use>
-                </svg>
-                <span>新建</span>
-            </button>
+            <div class="addResource">
+                <button>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-add"></use>
+                    </svg>
+                    <span>新建</span>
+                </button>
+            </div>
 
             <div class="resources">
                 <ul class="songs">
@@ -74,56 +76,67 @@
         </div>
 
         <div class="editResource">
-            <form>
-                <h3>编辑歌曲</h3>
-                <div class="row">
-                    <label>
-                        <span>歌曲：</span>
-                        <input type="text">
-                    </label>
-                </div>
-                <div class="row">
-                    <label>
-                        <span>链接：</span>
-                        <input type="text">
-                    </label>
-                </div>
-                <div class="row">
-                    <label>
-                        <span>歌手：</span>
-                        <input type="text">
-                    </label>
-                </div>
-                <div class="row">
-                    <label>
-                        <span>专辑：</span>
-                        <input type="text">
-                    </label>
-                </div>
-                <div class="row">
-                    <label>
-                        <span>封面链接：</span>
-                        <input type="text">
-                    </label>
-                </div>
-                <div class="row">
-                    <label>
-                        <span>封面预览：</span>
-                        <img src="./img/范特西.jpg" alt="" width="200">
-                    </label>
-                </div>
-                <div class="row">
-                    <label>
-                        <span>歌词：</span>
-                        <textarea></textarea>
-                    </label>
-                </div>
-                <div class="row">
-                    <button type="submit">保存</button>
-                    <button>取消</button>
-                </div>
 
-            </form>
+            <div class="upload">
+                <div id="dragArea">
+                    <button id="clickArea">
+                        <p>点击或拖拽上传</p>
+                        <p>文件不能超过50MB</p>
+                    </button>
+                </div>
+            </div>
+
+            <div class="edit">
+                <form>
+                    <h3>编辑歌曲</h3>
+                    <div class="row">
+                        <label>
+                            <span>歌曲：</span>
+                            <input type="text">
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label>
+                            <span>链接：</span>
+                            <input type="text">
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label>
+                            <span>歌手：</span>
+                            <input type="text">
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label>
+                            <span>专辑：</span>
+                            <input type="text">
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label>
+                            <span>封面链接：</span>
+                            <input type="text">
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label>
+                            <span>封面预览：</span>
+                            <img src="./img/范特西.jpg" alt="" width="200">
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label>
+                            <span>歌词：</span>
+                            <textarea></textarea>
+                        </label>
+                    </div>
+                    <div class="row">
+                        <button type="submit">保存</button>
+                        <button>取消</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
 

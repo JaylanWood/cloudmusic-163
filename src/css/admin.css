@@ -4,6 +4,8 @@
 *{font:14px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;}
 ul,ol{list-style:none;}
 a{text-decoration:none;color:inherit;}
+.hidden{display:none;}
+.visible{display:block;}
 /* layout */
 header{display:flex;}
 main{display:flex;}
@@ -19,42 +21,48 @@ main>nav>ul>li:hover{background-color:#E2E2E2;}
 /* library */
 main>.library{background-color:#FFFFFF;}
 /* addResource */
-main>.library>.addResource{border:none;padding:0.8em 1.2em;margin:0.5em;background-color:#D43B33;color:#FFFFFF;border-radius:5px;}
-main>.library>.addResource:hover{box-shadow:0px 0px 2px 1px #b6b6b6;}
-/* resources */
+main>.library>.addResource>button{border:none;padding:0.8em 1.2em;margin:0.5em;background-color:#D43B33;color:#FFFFFF;border-radius:5px;}
+main>.library>.addResource>button:hover{box-shadow:0px 0px 2px 1px #b6b6b6;}
+/* resources>songs */
 main>.library>.resources>.songs>li{padding:10px 15px;}
 main>.library>.resources>.songs>li:nth-child(odd){background-color:#FAFAFA;}
 main>.library>.resources>.songs>li:nth-child(even){background-color:#FFFFFF;}
 main>.library>.resources>.songs>li{display:flex;flex-direction:column;}
 main>.library>.resources>.songs>li:hover{background-color:#F2F2F3;}
-main>.library>.resources>.songs>li>div{max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+main>.library>.resources>.songs>li>div{max-width:420px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
 main>.library>.resources>.songs>li>.songName{color:#201F1E;}
 main>.library>.resources>.songs>li>.artistName,main>.library>.resources>.songs>li>.albumName{color:#605E5C;font-size:12px;}
 /* resources>img */
 main>.library>.resources>.images{display:flex;flex-wrap:wrap;}
-main>.library>.resources>.images>.imageItem{margin:3px;display:flex;flex-direction:column;}
-main>.library>.resources>.images>.imageItem>img,main>.library>.resources>.images>.imageItem>span,main>.library>.resources>.images>.imageItem>button{width:100px;font-size:12px;margin:2px;}
-main>.library>.resources>.images>.imageItem>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-main>.library>.resources>.images>.imageItem>button{border:1px #EDEBE9 solid;border-radius:3px;background-color:#FFFFFF;}
-main>.library>.resources>.images>.imageItem>button:hover{border-color:#D43B33;background-color:#D43B33;box-shadow:0px 0px 2px 1px #b6b6b6;color:#FFFFFF;}
+main>.library>.resources>.images>li{margin:3px;display:flex;flex-direction:column;}
+main>.library>.resources>.images>li>img,main>.library>.resources>.images>li>span,main>.library>.resources>.images>li>button{width:100px;font-size:12px;margin:2px;}
+main>.library>.resources>.images>li>span{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
+main>.library>.resources>.images>li>button{border:1px #EDEBE9 solid;border-radius:3px;background-color:#FFFFFF;}
+main>.library>.resources>.images>li>button:hover{border-color:#D43B33;background-color:#D43B33;box-shadow:0px 0px 2px 1px #b6b6b6;color:#FFFFFF;}
 /* resources>playlist */
 main>.library>.resources>.playlists>li{padding:10px 15px;}
 main>.library>.resources>.playlists>li:nth-child(odd){background-color:#FAFAFA;}
 main>.library>.resources>.playlists>li:nth-child(even){background-color:#FFFFFF;}
 main>.library>.resources>.playlists>li{display:flex;flex-direction:column;}
 main>.library>.resources>.playlists>li:hover{background-color:#F2F2F3;}
-main>.library>.resources>.playlists>li>div{max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+main>.library>.resources>.playlists>li>div{max-width:420px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
 main>.library>.resources>.playlists>li>.playlistName{color:#201F1E;}
 /* editResource */
 .editResource{padding:12px;}
-.editResource>form>h3{font-size:20px;}
-.editResource>form>.row{padding:8px 0px;}
-.editResource>form>.row>label{display:flex;flex-direction:column;}
-.editResource>form>.row>label>input,.editResource>form>.row>label>textarea{border:1px #EDEBE9 solid;border-radius:3px;}
-.editResource>form>.row>label>input{line-height:1.5em;}
-.editResource>form>.row>label:hover>input,.editResource>form>.row>label:hover>textarea{box-shadow:0px 0px 1px 1px #b6b6b6;}
-.editResource>form>.row>button{border:1px #EDEBE9 solid;border-radius:3px;background-color:#FFFFFF;padding:6px 8px;}
-.editResource>form>.row>button:hover{border-color:#D43B33;background-color:#D43B33;box-shadow:0px 0px 2px 1px #b6b6b6;color:#FFFFFF;}
+/* editResource>upload */
+
+.editResource>.upload>#dragArea{margin:5px 0;border:1px #b6b6b6 dashed;border-radius:5px;background-color:#FFFFFF;display:flex;justify-content:center;padding:2em;flex-direction:column;}
+.editResource>.upload>#dragArea>#clickArea{color:#FFFFFF;border:1px #b6b6b6 solid;border-radius:5px;background-color:#D43B33;padding:5px;}
+/* editResource>.edit>form */
+
+.editResource>.edit>form>h3{font-size:20px;}
+.editResource>.edit>form>.row{padding:8px 0px;}
+.editResource>.edit>form>.row>label{display:flex;flex-direction:column;}
+.editResource>.edit>form>.row>label>input,.editResource>.edit>form>.row>label>textarea{border:1px #EDEBE9 solid;border-radius:3px;}
+.editResource>.edit>form>.row>label>input{line-height:1.5em;}
+.editResource>.edit>form>.row>label:hover>input,.editResource>.edit>form>.row>label:hover>textarea{box-shadow:0px 0px 1px 1px #b6b6b6;}
+.editResource>.edit>form>.row>button{border:1px #EDEBE9 solid;border-radius:3px;background-color:#FFFFFF;padding:6px 8px;}
+.editResource>.edit>form>.row>button:hover{border-color:#D43B33;background-color:#D43B33;box-shadow:0px 0px 2px 1px #b6b6b6;color:#FFFFFF;}
 /* media query */
 @media (min-width:420px) and (max-width:640px){header>button>span,main>nav>ul>li>span{display:none;}
 }
@@ -66,8 +74,9 @@ main>nav>ul>li>.icon{width:2em;height:2em;}
 main>nav>ul>li>span{display:none;}
 main>.library>.resources>.songs>li{width:100vw;}
 main>.library>.resources>.images{flex-direction:column;}
-main>.library>.resources>.images>.imageItem{width:100vw;flex-direction:row;align-items:center;justify-content:space-around;}
-main>.library>.resources>.images>.imageItem>img{width:50px;}
+main>.library>.resources>.images>li{width:100vw;flex-direction:row;align-items:center;justify-content:space-around;}
+main>.library>.resources>.images>li>img{width:50px;}
 main>.library>.resources>.playlists>li{width:100vw;}
-main>.editResource{display:none;}
+/* main>.editResource{display:none;}
+*/
 }
