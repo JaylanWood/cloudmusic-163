@@ -39,10 +39,18 @@
             this.data.images = []
         },
         create(data) {
-            this.data.images.push(data)
+            this.data.images = data
         },
-        getAvObject() {
-            return new AV.Query('Image').find()
+        getDataFormAv() {
+            return new AV.Query('Image').find().then((images) => {
+                this.data.images = images.map((image) => {
+                    return {
+                        id: image.id,
+                        ...image.attributes
+                    }
+                })
+                return images
+            })
         },
     }
     let controller = {
@@ -50,66 +58,26 @@
             this.view = view
             this.model = model
             this.view.init()
-            this.model.getAvObject()
-                .then((images) => {
-                    this.model.data.images = []
-                    images.map((image) => {
-                        this.model.data.images.push({
-                            'name': image.attributes.name,
-                            'id': image.id,
-                            'url': image.attributes.url
-                        })
-                    })
-                    return images
-                })
-                .then((images) => {
-                    this.view.render(this.model.data.images)
-                    return images
-                })
+            this.rednerAfterGetDataFormAv()
+            this.bindEventHub()
             this.bindEvents()
         },
-        bindEvents() {
+        rednerAfterGetDataFormAv() {
+            this.model.getDataFormAv().then((images) => {
+                this.view.render(this.model.data.images)
+                return images
+            })
+        },
+        bindEventHub() {
             window.eventHub.on('imageSaved', () => {
-                this.model.getAvObject()
-                    .then((images) => {
-                        this.model.reset()
-                        images.map((image) => {
-                            this.model.data.images.push({
-                                'name': image.attributes.name,
-                                'id': image.id,
-                                'url': image.attributes.url
-                            })
-                        })
-                        return images
-                    })
-                    .then((images) => {
-                        this.view.render(this.model.data.images)
-                        return images
-                    })
+                this.rednerAfterGetDataFormAv()
             })
             window.eventHub.on('deleted', () => {
-                console.log('删除了啊')
-                this.model.getAvObject()
-                    .then((images) => {
-                        this.model.reset()
-                        images.map((image) => {
-                            this.model.data.images.push({
-                                'name': image.attributes.name,
-                                'id': image.id,
-                                'url': image.attributes.url
-                            })
-                        })
-                        return images
-                    })
-                    .then((images) => {
-                        console.log(this.model.data.images)
-                        this.view.render(this.model.data.images)
-                        console.log('渲染了啊')
-                        return images
-                    })
-
+                this.rednerAfterGetDataFormAv()
             })
-            $(this.view.el).on('click', 'li', (eee) => {
+        },
+        bindEvents() {
+            this.view.$el.on('click', 'li', (eee) => {
                 let $li = $(eee.currentTarget)
                 this.model.selectedImageId = $li.attr('data-image-id')
                 let selectedImage;
@@ -121,6 +89,20 @@
                 }
                 window.eventHub.emit('editResource', selectedImage)
             })
+
+            this.view.$el.on('click', '.copyImgUrl', (eee) => {
+                eee.stopPropagation()
+                let url = $(eee.currentTarget).siblings('img').attr('src')
+                this.copyContent(url)
+            })
+        },
+        copyContent(content) {
+            let aux = document.createElement("input")
+            aux.setAttribute("value", content)
+            document.body.appendChild(aux)
+            aux.select()
+            document.execCommand("copy",true)
+            document.body.removeChild(aux)
         }
     }
     controller.init(view, model)

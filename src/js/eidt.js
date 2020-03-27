@@ -31,42 +31,40 @@
         init() {
             this.$el = $(this.el)
         },
-        render(data) {
+        render(image) {
             let placehold = ['name', 'url', 'url']
             let html = this.template
             placehold.map((string) => {
-                html = html.replace(`{{${string}}}`, data[string] || '')
+                html = html.replace(`{{${string}}}`, image[string] || '')
             })
-            $(this.el).html(html)
-            if (data.id) {
-                $(this.el).find('#editBtn').append('<button type="button" class="delete">删除</button>')
-            } 
+            this.$el.html(html)
+            if (image.id) {
+                this.$el.find('#editBtn').append('<button type="button" class="delete">删除</button>')
+            }
         },
         reset() {
             this.render({})
         },
         show() {
-            $(this.el).removeClass('hidden').addClass('active')
+            this.$el.removeClass('hidden').addClass('active')
         },
         hide() {
-            $(this.el).removeClass('active').addClass('hidden')
+            this.$el.removeClass('active').addClass('hidden')
         }
     }
     let model = {
         data: {
-            'name': '',
-            'url': '',
+            image: {} //{'name':'','url':'','id':''}
         },
         reset() {
-            this.data = {}
+            this.data.image = {}
         },
         create(data) {
-            this.data = data
+            this.data.image = data
         },
         saveAvObject(className, data) {
             let AvObjetct = AV.Object.extend(className)
-            let avObjetct = new AvObjetct()
-            return avObjetct.set(data).save()
+            return new AvObjetct().set(data).save()
         },
         updateAvObject(className, data) {
             return AV.Object.createWithoutData(className, data.id).set(data).save()
@@ -81,8 +79,9 @@
             this.model = model
             this.view.init()
             this.bindEvents()
+            this.bindEventHub()
         },
-        bindEvents() {
+        bindEventHub() {
             window.eventHub.on('addResource', () => {
                 this.model.reset()
                 this.view.reset()
@@ -90,13 +89,12 @@
             })
             window.eventHub.on('uploaded', (data) => {
                 this.model.create(data)
-                this.view.render(this.model.data)
+                this.view.render(this.model.data.image)
             })
             window.eventHub.on('editResource', (data) => {
                 this.view.show()
-                this.model.reset()
                 this.model.create(data)
-                this.view.render(this.model.data)
+                this.view.render(this.model.data.image)
             })
             window.eventHub.on('imageSaved', () => {
                 this.view.hide()
@@ -104,13 +102,15 @@
             window.eventHub.on('cancelEdit', () => {
                 this.view.hide()
             })
+        },
+        bindEvents() {
             this.view.$el.on('submit', (eee) => {
                 eee.preventDefault()
-                this.model.data.name = $(this.view.el).find(`[name="name"]`).val()
-                this.model.data.url = $(this.view.el).find(`[name="url"]`).val()
+                this.model.data.image.name = this.view.$el.find(`[name="name"]`).val()
+                this.model.data.image.url = this.view.$el.find(`[name="url"]`).val()
 
-                if (this.model.data.id) {
-                    this.model.updateAvObject('Image', this.model.data)
+                if (this.model.data.image.id) {
+                    this.model.updateAvObject('Image', this.model.data.image)
                         .then((image) => {
                             window.eventHub.emit('imageSaved', {
                                 'name': image.attributes.name,
@@ -120,8 +120,8 @@
                         })
                 } else {
                     this.model.saveAvObject('Image', {
-                        'name': this.model.data.name,
-                        'url': this.model.data.url
+                        'name': this.model.data.image.name,
+                        'url': this.model.data.image.url
                     }).then((image) => {
                         window.eventHub.emit('imageSaved', {
                             'name': image.attributes.name,
@@ -135,7 +135,7 @@
                 window.eventHub.emit('cancelEdit')
             })
             this.view.$el.on('click', '.delete', () => {
-                this.model.deleteAvObject('Image', this.model.data.id)
+                this.model.deleteAvObject('Image', this.model.data.image.id)
                     .then(() => {
                         window.eventHub.emit('deleted')
                     })

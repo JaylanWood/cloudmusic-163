@@ -28,8 +28,7 @@
             this.bindEvents()
         },
         bindEvents() {
-            var btn = $(this.view.el).find('button').eq(0)
-            btn.on('click', () => {
+            this.view.$el.find('button').eq(0).on('click', () => {
                 window.eventHub.emit('addResource')
             })
         }

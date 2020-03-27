@@ -1,3 +1,4 @@
 /node_modules
 /src/js/leancloud-AVinit.js
 /src/json/qiniu-config.json
+/src/js/AV.js
