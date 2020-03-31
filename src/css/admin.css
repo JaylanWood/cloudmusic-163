@@ -4,79 +4,95 @@
 *{font:14px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;}
 ul,ol{list-style:none;}
 a{text-decoration:none;color:inherit;}
-.hidden{display:none;}
-.visible{display:block;}
 /* layout */
+body{display:flex;flex-direction: column;height: 100vh;background-color:#F3F2F1;}
 header{display:flex;}
-main{display:flex;}
+main{display:flex;flex-grow: 1;}
 /* header */
 header{display:flex;background-color:#242424;}
 header>.title{display:flex;align-items:center;font-size:20px;color:#FFFFFF;padding:20px;}
 /* main */
 main{display:flex;background-color:#F3F2F1;}
-/* nav */
-main>nav{border-right:1px #EDEBE9 solid;}
-main>nav>ul>li{padding:10px 20px;text-align:center;}
-main>nav>ul>li:hover{background-color:#E2E2E2;}
+/* tab */
+#tab{border-right:1px #EDEBE9 solid;cursor: pointer;}
+#tab>ul{display: flex;flex-direction: column;flex-grow: 1;}
+#tab>ul>li{padding:10px 20px;text-align:center;}
+#tab>ul>li.active{background-color:#E2E2E2;}
+#tab>ul>li:hover{background-color:#E2E2E2;}
+.page{display: none;}
+.page.active{display: flex;}
 /* library */
-main>.library{background-color:#FFFFFF;}
+.library{display: none;background-color:#FFFFFF;}
+.library.active{display: flex;flex-direction: column;}
 /* addResource */
-main>.library>.addResource>button{border:none;padding:0.8em 1.2em;margin:0.5em;background-color:#D43B33;color:#FFFFFF;border-radius:5px;}
-main>.library>.addResource>button:hover{box-shadow:0px 0px 2px 1px #b6b6b6;}
-/* resources>songs */
-main>.library>.resources>.songs>li{padding:10px 15px;}
-main>.library>.resources>.songs>li:nth-child(odd){background-color:#FAFAFA;}
-main>.library>.resources>.songs>li:nth-child(even){background-color:#FFFFFF;}
-main>.library>.resources>.songs>li{display:flex;flex-direction:column;}
-main>.library>.resources>.songs>li:hover{background-color:#F2F2F3;}
-main>.library>.resources>.songs>li>div{max-width:420px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
-main>.library>.resources>.songs>li>.songName{color:#201F1E;}
-main>.library>.resources>.songs>li>.artistName,main>.library>.resources>.songs>li>.albumName{color:#605E5C;font-size:12px;}
-/* resources>img */
-main>.library>.resources>.images{display:flex;flex-wrap:wrap;}
-main>.library>.resources>.images>li{margin:3px;display:flex;flex-direction:column;}
-main>.library>.resources>.images>li>img,main>.library>.resources>.images>li>span,main>.library>.resources>.images>li>button{width:100px;font-size:12px;margin:2px;}
-main>.library>.resources>.images>li>span{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
-main>.library>.resources>.images>li>button{border:1px #EDEBE9 solid;border-radius:3px;background-color:#FFFFFF;}
-main>.library>.resources>.images>li>button:hover{border-color:#D43B33;background-color:#D43B33;box-shadow:0px 0px 2px 1px #b6b6b6;color:#FFFFFF;}
-/* resources>playlist */
-main>.library>.resources>.playlists>li{padding:10px 15px;}
-main>.library>.resources>.playlists>li:nth-child(odd){background-color:#FAFAFA;}
-main>.library>.resources>.playlists>li:nth-child(even){background-color:#FFFFFF;}
-main>.library>.resources>.playlists>li{display:flex;flex-direction:column;}
-main>.library>.resources>.playlists>li:hover{background-color:#F2F2F3;}
-main>.library>.resources>.playlists>li>div{max-width:420px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
-main>.library>.resources>.playlists>li>.playlistName{color:#201F1E;}
-/* editResource */
-.editResource{padding:12px;}
-/* editResource>upload */
-
-.editResource>.upload>#dragArea{margin:5px 0;border:1px #b6b6b6 dashed;border-radius:5px;background-color:#FFFFFF;display:flex;justify-content:center;padding:2em;flex-direction:column;}
-.editResource>.upload>#dragArea>#clickArea{color:#FFFFFF;border:1px #b6b6b6 solid;border-radius:5px;background-color:#D43B33;padding:5px;}
-/* editResource>.edit>form */
-
-.editResource>.edit>form>h3{font-size:20px;}
-.editResource>.edit>form>.row{padding:8px 0px;}
-.editResource>.edit>form>.row>label{display:flex;flex-direction:column;}
-.editResource>.edit>form>.row>label>input,.editResource>.edit>form>.row>label>textarea{border:1px #EDEBE9 solid;border-radius:3px;}
-.editResource>.edit>form>.row>label>input{line-height:1.5em;}
-.editResource>.edit>form>.row>label:hover>input,.editResource>.edit>form>.row>label:hover>textarea{box-shadow:0px 0px 1px 1px #b6b6b6;}
-.editResource>.edit>form>.row>button{border:1px #EDEBE9 solid;border-radius:3px;background-color:#FFFFFF;padding:6px 8px;}
-.editResource>.edit>form>.row>button:hover{border-color:#D43B33;background-color:#D43B33;box-shadow:0px 0px 2px 1px #b6b6b6;color:#FFFFFF;}
+.library>.addResource{display: none;}
+.library>.addResource.active{display: block;}
+.library>.addResource>button{border:none;padding:0.8em 1.2em;margin:0.5em;background-color:#D43B33;color:#FFFFFF;border-radius:5px;}
+.library>.addResource>button:hover{box-shadow:0px 0px 2px 1px #b6b6b6;}
+/* showResource */
+.library>.showResource{display: none;}
+.library>.showResource.active{display: flex;}
+/* showResource>songs */
+.library>.showResource>.songs>li{padding:10px 15px;}
+.library>.showResource>.songs>li:nth-child(odd){background-color:#FAFAFA;}
+.library>.showResource>.songs>li:nth-child(even){background-color:#FFFFFF;}
+.library>.showResource>.songs>li{display:flex;flex-direction:column;}
+.library>.showResource>.songs>li:hover{background-color:#F2F2F3;}
+.library>.showResource>.songs>li>div{max-width:420px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
+.library>.showResource>.songs>li>.songName{color:#201F1E;}
+.library>.showResource>.songs>li>.artistName,.library>.showResource>.songs>li>.albumName{color:#605E5C;font-size:12px;}
+/* showResource>images */
+.library>.showResource>.covers{display:flex;flex-wrap:wrap;}
+.library>.showResource>.covers>li{margin:3px;display:flex;flex-direction:column;}
+.library>.showResource>.covers>li>img,.library>.showResource>.covers>li>span,.library>.showResource>.covers>li>button{width:100px;font-size:12px;margin:2px;}
+.library>.showResource>.covers>li>img{border-radius: 3px;}
+.library>.showResource>.covers>li>span{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
+.library>.showResource>.covers>li>button{border:1px #EDEBE9 solid;border-radius:3px;background-color:#FFFFFF;}
+.library>.showResource>.covers>li>button:hover{border-color:#D43B33;background-color:#D43B33;box-shadow:0px 0px 2px 1px #b6b6b6;color:#FFFFFF;}
+/* showResource>playlist */
+.library>.showResource>.playlists>li{padding:10px 15px;}
+.library>.showResource>.playlists>li:nth-child(odd){background-color:#FAFAFA;}
+.library>.showResource>.playlists>li:nth-child(even){background-color:#FFFFFF;}
+.library>.showResource>.playlists>li{display:flex;align-items: center;}
+.library>.showResource>.playlists>li:hover{background-color:#F2F2F3;}
+.library>.showResource>.playlists>li>div{margin: 0 5px;max-width:420px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
+.library>.showResource>.playlists>li>.playlistName{color:#201F1E;}
+/* manage */
+.manage{display:none;padding:12px;}
+.manage.active{display:flex;flex-direction: column;}
+/* manage>uploadResource */
+.manage>.uploadResource{display: none;}
+.manage>.uploadResource.active{display: flex;}
+.manage>.uploadResource>#dragArea{margin:5px 0;border:1px #b6b6b6 dashed;border-radius:5px;background-color:#FFFFFF;display:flex;justify-content:center;padding:2em;flex-direction:column;}
+.manage>.uploadResource>#dragArea>#clickArea{color:#FFFFFF;border:1px #b6b6b6 solid;border-radius:5px;background-color:#D43B33;padding:5px;}
+/* manage>editResource */
+.manage>.editResource{display: none;}
+.manage>.editResource.active{display: flex;}
+.manage>.editResource>form>h3{font-size:20px;}
+.manage>.editResource>form>.row{padding:8px 0px;}
+.manage>.editResource>form>.row>label{display:flex;flex-direction:column;}
+.manage>.editResource>form>.row>label>input,.manage>.editResource>form>.row>label>textarea{border:1px #EDEBE9 solid;border-radius:3px;}
+.manage>.editResource>form>.row>label>input{line-height:1.5em;}
+.manage>.editResource>form>.row>label:hover>input,.manage>.editResource>form>.row>label:hover>textarea{box-shadow:0px 0px 1px 1px #b6b6b6;}
+.manage>.editResource>form>.row>button{border:1px #EDEBE9 solid;border-radius:3px;background-color:#FFFFFF;padding:6px 8px;}
+.manage>.editResource>form>.row>button:hover{border-color:#D43B33;background-color:#D43B33;box-shadow:0px 0px 2px 1px #b6b6b6;color:#FFFFFF;}
 /* media query */
-@media (min-width:420px) and (max-width:640px){header>button>span,main>nav>ul>li>span{display:none;}
+@media (min-width:420px) and (max-width:640px){header>button>span,#tab>ul>li>span{display:none;}
 }
 @media (max-width:420px){header>button>span{display:none;}
-main>nav{width:100%;position:fixed;bottom:0;border-right:none;border-top:1px #EDEBE9 solid;background-color:#FFFFFF;}
-main>nav>ul{display:flex;justify-content:space-around;}
-main>nav>ul>li{flex-grow:1;}
-main>nav>ul>li>.icon{width:2em;height:2em;}
-main>nav>ul>li>span{display:none;}
-main>.library>.resources>.songs>li{width:100vw;}
-main>.library>.resources>.images{flex-direction:column;}
-main>.library>.resources>.images>li{width:100vw;flex-direction:row;align-items:center;justify-content:space-around;}
-main>.library>.resources>.images>li>img{width:50px;}
-main>.library>.resources>.playlists>li{width:100vw;}
-/* main>.editResource{display:none;}
+#tab{width:100%;position:fixed;bottom:0;border-right:none;border-top:1px #EDEBE9 solid;background-color:#FFFFFF;}
+#tab>ul{display:flex;flex-direction: row;justify-content:space-around;}
+#tab>ul>li{flex-grow:1;}
+#tab>ul>li>.icon{width:2em;height:2em;}
+#tab>ul>li>span{display:none;}
+.library>.showResource>.songs>li{width:100vw;}
+.library>.showResource>.covers{flex-direction:column;}
+.library>.showResource>.covers>li{width:100vw;flex-direction:row;align-items:center;justify-content:space-around;}
+.library>.showResource>.covers>li>img{width:50px;}
+.library>.showResource>.playlists>li{width:100vw;}
+
+.library>.showResource>.covers>li:nth-child(odd){background-color:#FAFAFA;}
+.library>.showResource>.covers>li:nth-child(even){background-color:#FFFFFF;}
+/* main>.manage{display:none;}
 */
 }

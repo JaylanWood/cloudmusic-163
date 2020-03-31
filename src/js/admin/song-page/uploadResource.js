@@ -1,6 +1,6 @@
 {
     let view = {
-        el: '.editResource>.upload',
+        el: '#song-page>.manage>.uploadResource',
         template: `
             <div id="dragArea">
                 <button id="clickArea">
@@ -16,18 +16,18 @@
             this.$el.html(this.template)
         },
         show() {
-            this.$el.removeClass('hidden').addClass('active')
+            this.$el.addClass('active')
         },
         hide() {
-            this.$el.removeClass('active').addClass('hidden')
+            this.$el.removeClass('active')
         }
     }
     let model = {
         data: {
-            image: {} // {name:'',url:''}
+            dataObj: {} // {name:'',url:''}
         },
-        create(data) {
-            this.data.image = data
+        create(dataObj) {
+            this.data.dataObj = dataObj
         },
     }
     let controller = {
@@ -40,16 +40,10 @@
             this.bindEventHub()
         },
         bindEventHub() {
-            window.eventHub.on('addResource', () => {
+            window.eventHub.on('addResource-song', () => {
                 this.view.show()
             })
-            window.eventHub.on('editResource', () => {
-                this.view.hide()
-            })
-            window.eventHub.on('imageSaved', () => {
-                this.view.hide()
-            })
-            window.eventHub.on('cancelEdit', () => {
+            window.eventHub.on('editResource-song', () => {
                 this.view.hide()
             })
         },
@@ -84,10 +78,11 @@
                         let response = JSON.parse(info.response)
                         let url = `http://${domain}/${encodeURIComponent(response.key)}`
                         let name = response.key
-                        window.eventHub.emit('uploaded', {
-                            'name': name,
-                            'url': url,
-                        })
+                        let fileObj = {
+                            'songName': name,
+                            'songUrl': url,
+                        }
+                        window.eventHub.emit('fileUploadToQiniu-song', fileObj)
                     },
                     'Error': function (up, err, errTip) {
                         //上传出错时,处理相关的事情

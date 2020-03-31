@@ -1,12 +1,12 @@
 {
     let view = {
-        el: '.library>.addResource',
+        el: '#song-page>.library>.addResource',
         template: `
             <button>
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-add"></use>
                 </svg>
-                <span>新建</span>
+                <span>新建歌曲</span>
             </button>
         `,
         init() {
@@ -14,24 +14,29 @@
         },
         render() {
             this.$el.html(this.template)
+        },
+        show() {
+            this.$el.addClass('active')
+        },
+        hide() {
+            this.$el.removeClass('active')
         }
     }
-    let model = {
-
-    }
+    let model = {}
     let controller = {
         init(view, model) {
             this.view = view
             this.model = model
             this.view.init()
             this.view.render()
+            this.view.show()
             this.bindEvents()
         },
         bindEvents() {
-            this.view.$el.find('button').eq(0).on('click', () => {
-                window.eventHub.emit('addResource')
+            this.view.$el.find('button').on('click', () => {
+                window.eventHub.emit('addResource-song')
             })
-        }
+        },
     }
     controller.init(view, model)
 }
