@@ -1,0 +1,6 @@
+/* reset */
+*{padding:0;margin:0;}
+*{box-sizing:border-box;}
+*{font:14px/1.5 Helvetica,sans-serif,STHeiTi;font-weight:0;}
+ul,ol{list-style:none;}
+a{text-decoration:none;color:inherit;}

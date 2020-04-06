@@ -1,0 +1,22 @@
+body{display:flex;flex-direction:column;background:url("../img/index/范特西.jpg") center center no-repeat;background-size:cover;width:100vw;height:100vh;position:relative;}
+body::after{content:"";width:100%;height:100%;position:absolute;left:0;top:0;background:inherit;filter:blur(10px);z-index:-2;}
+body::before{content:"";width:100%;height:100%;position:absolute;left:0;top:0;background-color:black;opacity:0.3;z-index:-1;}
+header>.logoAndHeader{position:absolute;left:10px;top:10px;display:flex;align-items:center;}
+header>.logoAndHeader>.logo{width:16px;height:16px;margin-right:3px;}
+header>.logoAndHeader>.header{color:#ffffff;}
+main{width:100%;display:flex;flex-direction:column;}
+main>.songPlay>.needle{position:absolute;left:50%;width:110px;height:157px;z-index:1;margin-left:-15px;}
+main>.songPlay>.disc{display:flex;justify-content:center;align-items:center;margin-top:55px;width:100vw;height:380px;}
+main>.songPlay>.disc>.disc-cover{position:absolute;width:220px;}
+main>.songPlay>.disc>.disc-ring,main>.songPlay>.disc>.disc-heightLight{position:absolute;width:342px;}
+main>.songPlay>.disc>.play{position:absolute;}
+main>.songInfo{text-align:center;padding:0 35px;}
+main>.songInfo>.songName{color:#ffffff;font-size:18px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:14px;}
+main>.songInfo>.songLyrics>.lyricsList{height:56px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+main>.songInfo>.songLyrics>.lyricsList>p{padding-bottom:8px;font-size:16px;color:#C1C3C3;}
+main>.songInfo>.songLyrics>.lyricsList>p.active{color:#ffffff;}
+footer{position:fixed;width:100vw;bottom:0;}
+footer>.sticky{margin:10px;display:flex;justify-content:space-between;}
+footer>.sticky>a{grid-row:1;border:1px #FF3A3B solid;border-radius:19px;height:40px;font-size:18px;width:100%;display:flex;justify-content:center;align-items:center;}
+footer>.sticky>a.openApp{color:#FF3A3B;}
+footer>.sticky>a.download{color:#ffffff;background-color:#FF3A3B;margin-left:10px;}

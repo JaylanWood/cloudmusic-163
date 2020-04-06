@@ -14,9 +14,9 @@ header>.title{display:flex;align-items:center;font-size:20px;color:#FFFFFF;paddi
 /* main */
 main{display:flex;background-color:#F3F2F1;}
 /* tab */
-#tab{border-right:1px #EDEBE9 solid;cursor: pointer;}
+#tab{border-right:1px #EDEBE9 solid;}
 #tab>ul{display: flex;flex-direction: column;flex-grow: 1;}
-#tab>ul>li{padding:10px 20px;text-align:center;}
+#tab>ul>li{padding:10px 20px;text-align:center;cursor: pointer;}
 #tab>ul>li.active{background-color:#E2E2E2;}
 #tab>ul>li:hover{background-color:#E2E2E2;}
 .page{display: none;}
